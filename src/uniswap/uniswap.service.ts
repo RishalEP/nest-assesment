@@ -4,7 +4,7 @@ import {
   NotFoundException,
 } from '@nestjs/common';
 import { ethers, BigNumber } from 'ethers';
-import { ProviderService } from 'src/blockchain/provider/provider.service';
+import { ProviderService } from '../blockchain/provider/provider.service';
 import {
   UNISWAP_V2_FACTORY,
   UNISWAP_V2_FACTORY_ABI,
@@ -14,6 +14,12 @@ import {
 } from './uniswap.abis';
 import { getAmountOutExactIn } from './uniswap.math';
 
+type Reserves = {
+  reserve0: BigNumber;
+  reserve1: BigNumber;
+  blockTimestampLast: number;
+};
+
 interface ERC20Contract extends ethers.Contract {
   decimals(): Promise<number>;
   symbol(): Promise<string>;
@@ -22,12 +28,6 @@ interface ERC20Contract extends ethers.Contract {
 interface UniswapFactoryContract extends ethers.Contract {
   getPair(tokenA: string, tokenB: string): Promise<string>;
 }
-
-type Reserves = {
-  reserve0: BigNumber;
-  reserve1: BigNumber;
-  blockTimestampLast: number;
-};
 
 interface UniswapPairContract extends ethers.Contract {
   token0(): Promise<string>;

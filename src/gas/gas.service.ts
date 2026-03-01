@@ -1,5 +1,5 @@
 import { Injectable, OnModuleInit } from '@nestjs/common';
-import { ProviderService } from 'src/blockchain/provider/provider.service';
+import { ProviderService } from '../blockchain/provider/provider.service';
 import { BigNumber } from 'ethers';
 import { ConfigService } from '@nestjs/config';
 
