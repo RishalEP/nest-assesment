@@ -13,7 +13,7 @@ export class GasController {
     return {
       gasPriceWei: snapshot.gasPriceWei,
       gasPriceGwei: ethers.utils.formatUnits(snapshot.gasPriceWei, 'gwei'),
-      updatedAt: snapshot.updatedAt,
+      updatedAt: new Date(snapshot.updatedAt).toISOString(),
     };
   }
 }

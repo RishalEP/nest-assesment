@@ -21,7 +21,7 @@ export class GasService implements OnModuleInit {
     // refresh every 1s
     this.timer = setInterval(() => {
       void this.refresh();
-    }, 1000);
+    }, 3000);
 
     this.timer.unref?.();
   }
